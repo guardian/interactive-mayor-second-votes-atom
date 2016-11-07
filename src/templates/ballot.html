@@ -1,0 +1,22 @@
+<ul class="mayor-ballot js-{{=it.section.ref}}">
+    <li class="mayor-ballot__entry">
+        <span class="mayor-ballot__entry__name">Candidate</span>
+        <span class="mayor-ballot__entry__vote">1st</span>
+        <span class="mayor-ballot__entry__vote">2nd</span>
+    </li>
+    {{~it.section.candidates :candidate:i}}
+        <li class="mayor-ballot__entry {{?i === it.section.first}}js-first{{??i === it.section.second}}js-second{{?}}">
+            <span class="mayor-ballot__entry__name">{{=candidate}}</span>
+            <span class="mayor-ballot__entry__vote">
+                {{?i === it.section.first}}
+                    <img src="<%= path %>/assets/imgs/mark.png" />
+                {{?}}
+            </span>
+            <span class="mayor-ballot__entry__vote">
+                {{?i === it.section.second}}
+                    <img src="<%= path %>/assets/imgs/mark.png" />
+                {{?}}
+            </span>
+        </li>
+    {{~}}
+</ul>

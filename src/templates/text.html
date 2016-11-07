@@ -1,0 +1,8 @@
+<div {{?it.section.trigger}}class="js-trigger" data-trigger="{{=it.section.trigger}}"{{?}}>
+    {{?it.section.title}}
+        <h3 class="mayor-subtitle">{{=it.section.title}}</h3>
+    {{?}}
+    {{~it.section.copy :para}}
+        <p class="mayor-copy">{{=para}}</p>
+    {{~}}
+</div>

@@ -1,0 +1,333 @@
+@import "mq";
+@import "fonts";
+@import "share";
+
+$party-colors: (
+    'con': #0087dc,
+    'lab': #d50000,
+    'ukip': #70147A,
+    'libdem': #fdbb30,
+    'green' :#008066,
+    'bnp': #9c0000,
+    'independent': #767676
+);
+
+.mayor-container {
+    max-width: 660px;
+    @include mq(leftCol) {
+        margin-left: 160px;
+    }
+    @include mq(wide) {
+        margin-left: 240px;
+    }
+    padding-bottom: 100px;
+}
+
+.mayor-title {
+    @include fs-headline(4);
+    margin: 24px 0 6px;
+}
+
+.mayor-title__img {
+    text-align: right;
+    font-size: 0;
+    margin-bottom: 3px;
+    img {
+        display: inline-block;
+        vertical-align: bottom;
+        height: 100px;
+    }
+}
+
+// Override apps
+.prose h2 {
+    @include fs-headline(4);
+    font-weight: 200;
+    margin: 24px 0 6px;
+    & + p {
+        margin-top: 0;
+    }
+}
+
+.mayor-subtitle {
+    @include fs-header(2);
+    margin: 24px 0 0;
+}
+
+.mayor-copy {
+    @include fs-bodyCopy(2);
+    margin: 0 0 8px;
+
+    strong, b {
+        @include f-header;
+    }
+}
+
+// Override apps
+.prose p {
+    margin: 0 0 8px;
+}
+
+.mayor-sv {
+    @include fs-textSans(2);
+    display: block;
+    width: 100%;
+    overflow: visible !important; // Override frontend
+    margin: 12px 0 48px;
+    @include mq(tablet) {
+        margin-bottom: 60px;
+    }
+}
+
+.mayor-sv-count {
+    @include f-headline;
+    font-size: 24px;
+    line-height: 1;
+    text-align: right;
+    color: #767676;
+    &::after {
+        @include fs-textSans(2);
+        line-height: 16px;
+        content: "second-preference votes not counted";
+        display: block;
+        margin: 0 0 0 auto;
+        width: 140px;
+    }
+    margin-top: -105px;
+    @include mq(tablet) {
+        margin-top: -110px;
+    }
+    margin-bottom: 48px;
+    @include mq(tablet) {
+        margin-bottom: 60px;
+    }
+}
+
+.mayor-sv-replay {
+    @include fs-textSans(2);
+    margin-top: -40px !important; // Override apps
+    margin-bottom: 40px !important; // Override apps
+    @include mq(tablet) {
+        margin-top: -52px !important; // Override apps
+        margin-bottom: 52px !important; // Override apps
+    }
+    text-align: right;
+
+    & > button {
+        display: inline-block;
+        background-color: #005689;
+        color: white;
+        margin: 0;
+        padding: 5px 5px 5px 10px;
+        outline: 0;
+        border: 0;
+        border-radius: 100px;
+        cursor: pointer;
+        font-weight: bold;
+
+        -webkit-transition: opacity 0.2s ease-out;
+        -moz-transition: opacity 0.2s ease-out;
+        transition: opacity 0.2s ease-out;
+        &[disabled] {
+            opacity: 0.2;
+            cursor: inherit;
+        }
+
+        & > svg {
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-transition: transform 0.2s ease-out;
+            -moz-transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-out;
+        }
+
+        &:hover:not([disabled]) {
+            background-color: #00456e;
+            & > svg {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+}
+
+.mayor-sv__choice {
+    font-weight: bold;
+    fill: #333;
+}
+
+.mayor-sv__party {
+    @include fs-textSans(1, $size-only: true);
+    @each $party, $color in $party-colors {
+        &.is-#{$party} {
+            fill: $color;
+        }
+    }
+}
+
+.mayor-sv__vote {
+    fill: #767676;
+    stroke: white;
+    stroke-width: 0.5;
+
+    @each $party, $color in $party-colors {
+        &.is-party-#{$party} {
+            fill: $color;
+        }
+    }
+
+    transition: fill 0.3s ease-out, stroke 0.3s ease-out;
+    -webkit-transition: fill 0.3s ease-out, stroke 0.3s ease-out;
+    -moz-transition: fill 0.3s ease-out, stroke 0.3s ease-out;
+    &.mk-uncounted {
+        fill: #dcdcdc;
+        stroke: white;
+    }
+}
+
+.mayor-sv__note {
+    fill: #333;
+    stroke: white;
+    stroke-width: 5;
+    paint-order: stroke;
+    text-anchor: middle;
+
+    transition: opacity 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out;
+    opacity: 0;
+    &.mk-uncounted {
+        opacity: 1;
+    }
+
+    &.is-con {
+        fill: map-get($party-colors, con);
+    }
+}
+
+.mayor-sv__bucket {
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+
+    transition: stroke 0.2s ease-out;
+    -webkit-transition: stroke 0.2s ease-out;
+    -moz-transition: stroke 0.2s ease-out;
+    &.mk-uncounted {
+        stroke: #dcdcdc;
+    }
+}
+
+.mayor-sv--uncounted {
+    .is-counted {
+        display: none;
+    }
+
+    &.was-top2 .is-gmain.is-main,
+    &.was-topother .is-gmain.is-notmain {
+        fill: #dcdcdc;
+    }
+
+}
+
+.mayor-ballot {
+    @include fs-textSans(2);
+    list-style: none;
+    display: table;
+    width: 100%;
+    max-width: 480px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 6px 0 8px;
+    padding: 0;
+    background-color: #fffaea;
+
+    transition: color 0.4s ease-out;
+    -webkit-transition: color 0.4s ease-out;
+    -moz-transition: color 0.4s ease-out;
+    &.mk-animate {
+        color: #dcdcdc;
+    }
+}
+
+.mayor-ballot__entry {
+    display: table-row;
+    height: 24px;
+    border-bottom: 1px solid #dbd3c6;
+    &:first-child {
+        border-bottom-color: #333;
+        color: #333;
+        font-weight: bold;
+    }
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &.mk-counted {
+        color: #333;
+    }
+    &::before {
+        content: none !important; // Override apps
+    }
+}
+
+.mayor-ballot__entry__name,
+.mayor-ballot__entry__vote {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5px;
+    border-right: 1px dotted #333;
+    &:last-child {
+        border-right: 0;
+    }
+}
+
+@-webkit-keyframes countvote {
+    80% { transform: scale(3); }
+    100% { transform: scale(1); }
+}
+@-moz-keyframes countvote {
+    80% { transform: scale(3); }
+    100% { transform: scale(1); }
+}
+@keyframes countvote {
+    80% { transform: scale(3); }
+    100% { transform: scale(1); }
+}
+
+.mayor-ballot__entry__vote {
+    text-align: center;
+    width: 40px;
+
+    & > img {
+        height: 20px;
+        display: block;
+        margin: 0 auto;
+        background-color: black;
+
+        transition: background-color 0.4s ease-out;
+        -webkit-transition: background-color 0.4s ease-out;
+        -moz-transition: background-color 0.4s ease-out;
+        .mk-counted & {
+            -webkit-animation: countvote 0.4s;
+            -moz-animation: countvote 0.4s;
+            animation: countvote 0.4s;
+            background-color: #4a7801;
+        }
+        .mk-uncounted & {
+            -webkit-animation: countvote 0.4s;
+            -moz-animation: countvote 0.4s;
+            animation: countvote 0.4s;
+            background-color: #d61d00;
+        }
+        .js-second & {
+            -webkit-animation-delay: 0.4s;
+            -moz-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+.js-trigger {
+    position: relative;
+}

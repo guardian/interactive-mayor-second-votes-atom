@@ -1,0 +1,12 @@
+<h2 class="mayor-title">
+    {{?it.section.img}}
+        <div class="mayor-title__img">
+            <img class="mayor-title__img" src="<%= path %>/assets/imgs/khan.svg" />
+            <img class="mayor-title__img" src="<%= path %>/assets/imgs/goldsmith.svg" />
+        </div>
+    {{?}}
+    {{=it.section.title}}
+</h2>
+{{~it.section.copy :para}}
+    <p class="mayor-copy">{{=para}}</p>
+{{~}}

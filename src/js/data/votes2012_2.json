@@ -1,0 +1,103 @@
+{
+    "total": {
+        "first": 2208475
+    },
+    "independent": {
+        "name": "Siobhan Benita",
+        "first": 83914,
+        "second": {
+            "independent": 1651,
+            "bnp": 1083,
+            "con": 22207,
+            "green": 15227,
+            "lab": 24226,
+            "libdem": 10265,
+            "ukip": 3677,
+            "novote": 5578
+        }
+    },
+    "bnp": {
+        "name": "Carlos Cortiglia",
+        "first": 28751,
+        "second": {
+            "independent": 1147,
+            "bnp": 2214,
+            "con": 7481,
+            "green": 2527,
+            "lab": 2965,
+            "libdem": 1263,
+            "ukip": 7458,
+            "novote": 3696
+        }
+    },
+    "con": {
+        "name": "Boris Johnson",
+        "first": 971931,
+        "second": {
+            "independent": 108613,
+            "bnp": 47242,
+            "con": 65712,
+            "green": 116598,
+            "lab": 97183,
+            "libdem": 203585,
+            "ukip": 112805,
+            "novote": 220193
+        }
+    },
+    "green": {
+        "name": "Jenny Jones",
+        "first": 98913,
+        "second": {
+            "independent": 11466,
+            "bnp": 1107,
+            "con": 13321,
+            "green": 2812,
+            "lab": 46241,
+            "libdem": 13497,
+            "ukip": 3795,
+            "novote": 6674
+        }
+    },
+    "lab": {
+        "name": "Ken Livingston",
+        "first": 889918,
+        "second": {
+            "independent": 76800,
+            "bnp": 13393,
+            "con": 105117,
+            "green": 204861,
+            "lab": 135860,
+            "libdem": 128320,
+            "ukip": 28095,
+            "novote": 197472
+        }
+    },
+    "libdem": {
+        "name": "Brian Paddick",
+        "first": 91774,
+        "second": {
+            "independent": 8841,
+            "bnp": 1241,
+            "con": 25245,
+            "green": 16843,
+            "lab": 24465,
+            "libdem": 3588,
+            "ukip": 3788,
+            "novote": 7763
+        }
+    },
+    "ukip": {
+        "name": "Lawrence Webb",
+        "first": 43274,
+        "second": {
+            "independent": 3894,
+            "bnp": 7073,
+            "con": 14626,
+            "green": 4325,
+            "lab": 4458,
+            "libdem": 3174,
+            "ukip": 1634,
+            "novote": 4090
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<svg class="mayor-sv js-{{=it.section.ref}} {{=it.section.class || ''}}"></svg>
+{{?it.section.count}}
+    <p class="mayor-sv-count">{{=it.section.count}}</p>
+{{?}}
+{{?it.section.replay}}
+    <p class="mayor-sv-replay">
+        <button class="js-replay" data-replay="{{=it.section.ref}}" disabled>
+            Replay
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="m 12,4 0,-4 -5,5 5,5 0,-4 c 3.31,0 6,2.69 6,6 0,3.31 -2.69,6 -6,6 -3.31,0 -6,-2.69 -6,-6 l -2,0 c 0,4.42 3.58,8 8,8 4.42,0 8,-3.58 8,-8 0,-4.42 -3.58,-8 -8,-8 z"/>
+            </svg>
+        </button>
+    </p>
+{{?}}
