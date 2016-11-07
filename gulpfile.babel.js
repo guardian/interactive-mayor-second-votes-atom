@@ -57,15 +57,15 @@ function buildJS(filename) {
     return () => {
         return rollup({
                 'entry': `./src/js/${filename}`,
-                'sourceMap': true,
+                //'sourceMap': true,
                 'plugins': rollupPlugins,
                 'format': 'iife'
             })
             .pipe(source(filename, './src/js'))
             .pipe(buffer())
             .pipe(template({path}))
-            .pipe(sourcemaps.init({'loadMaps': true}))
-            .pipe(sourcemaps.write('.'))
+            //.pipe(sourcemaps.init({'loadMaps': true}))
+            //.pipe(sourcemaps.write('.'))
             .pipe(gulp.dest(buildDir));
     }
 }

@@ -263,7 +263,7 @@ $party-colors: (
         border-bottom: 0;
     }
 
-    &.mk-counted {
+    &.is-counted {
         color: #333;
     }
     &::before {
@@ -308,22 +308,22 @@ $party-colors: (
         transition: background-color 0.4s ease-out;
         -webkit-transition: background-color 0.4s ease-out;
         -moz-transition: background-color 0.4s ease-out;
-        .mk-counted & {
+        .mk-animate .is-counted & {
             -webkit-animation: countvote 0.4s;
             -moz-animation: countvote 0.4s;
             animation: countvote 0.4s;
             background-color: #4a7801;
         }
-        .mk-uncounted & {
+        .mk-animate .is-uncounted & {
             -webkit-animation: countvote 0.4s;
             -moz-animation: countvote 0.4s;
             animation: countvote 0.4s;
             background-color: #d61d00;
         }
-        .js-second & {
-            -webkit-animation-delay: 0.4s;
-            -moz-animation-delay: 0.4s;
-            animation-delay: 0.4s;
+        .is-second & {
+            -webkit-animation-delay: 0.4s !important;
+            -moz-animation-delay: 0.4s !important;
+            animation-delay: 0.4s !important;
         }
     }
 }

@@ -7,7 +7,6 @@ import svg from './lib/svg'
 import range from './lib/range'
 import shuffle from './lib/shuffle'
 import sendEvent from './lib/sendEvent'
-import fetch from './lib/fetch'
 
 import allVotes from './data/votes2012_2.json'
 
@@ -244,12 +243,9 @@ var step4nottop = svg.renderer('step4', step4fn, {
 });
 
 function ballot(el, section) {
-    var firstEl = el.querySelector('.js-first');
-    var secondEl = el.querySelector('.js-second');
-    window.addEventListener(section.ref + ':go', () => {
+    var ref = el.getAttribute('data-ref');
+    window.addEventListener(ref + ':go', () => {
         el.classList.add('mk-animate');
-        firstEl.classList.add(section.firstStatus === 'counted' ? 'mk-counted' : 'mk-uncounted')
-        secondEl.classList.add(section.secondStatus === 'counted' ? 'mk-counted' : 'mk-uncounted');
     });
 }
 
@@ -312,7 +308,7 @@ function getOffset(el) {
     return el ? el.offsetTop + getOffset(el.offsetParent) : 0;
 }
 
-function app(el, data) {
+function app(el) {
     step1($(el, '.js-step1'));
     step2($(el, '.js-step2'));
     step3($(el, '.js-step3'));
@@ -321,10 +317,7 @@ function app(el, data) {
     step4topother($(el, '.js-step4topother'));
     step4nottop($(el, '.js-step4nottop'));
 
-    // TODO: fix this
-    /*data.sections
-        .filter(section => section.type === 'ballot')
-        .forEach(section => ballot($(el, '.js-' + section.ref), section));*/
+    $$(el, '.js-ballot').forEach(ballot);
 
     $$(el, '.js-replay').forEach(replayEl => {
         var ref = replayEl.getAttribute('data-replay');
@@ -368,7 +361,4 @@ function app(el, data) {
 }
 
 var el = document.querySelector('.js-mayor-interactive');
-// TODO: remove
-const sheetId = '1728n8HAyJfERy3jsCz5r4grAYq6uQdY_TuzOfQ0Yd50';
-fetch(`https://interactive.guim.co.uk/docsdata/${sheetId}.json`).then(data => app(el, data));
 app(el);
